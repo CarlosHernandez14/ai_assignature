@@ -1,2 +1,4 @@
-.vscode/ 
+.vscode/
+
+# For virtual python envs needed
 .venv/
