@@ -1,0 +1,68 @@
+graph LR
+  Node1((1)) --40--> Node5((
+    5
+    G = 40
+    H = 66
+    F = 89
+  ))
+  Node1 ----|15| Node4((4))
+  Node1 <--40--> Node3((3))
+  Node1 <--60--> Node2((2))
+  
+  Node5 <--10--> Node9((9))
+  Node5 <--8--> Node6((6))
+  Node5 <--8--> Node4
+
+  Node4 <--8--> Node6
+  Node4 <--15--> Node7((7))
+  Node4 <--10--> Node3
+
+  Node3 <--15--> Node7
+  Node3 <--20--> Node8((8))
+  Node3 <--20--> Node2
+
+  Node2 <--18--> Node8
+
+  Node9 <--15--> Node13((13))
+  Node9 <--15--> Node12((12))
+  Node9 <--12--> Node10((10))
+  Node9 <--10--> Node6
+
+  Node6 <--8--> Node10
+  Node6 <--5--> Node7
+
+  Node7 <--15--> Node10
+  Node7 <--50--> Node11((11))
+  Node7 <--18--> Node8
+
+  Node8 <--20--> Node11
+
+  Node13 <--10--> Node15((15))
+  Node13 <--15--> Node14((14))
+  Node13 <--8--> Node12
+
+  Node10 <--5--> Node12
+  Node10 <--40--> Node11
+
+  Node11 <--50--> Node12
+  Node11 <--40--> Node16((16))
+
+  Node12 <--15--> Node14
+  Node12 <--50--> Node16
+
+  Node15 <--10--> Node19((19))
+  Node15 <--10--> Node18((18))
+
+  Node14 <--20--> Node18
+  Node14 <--50--> Node16
+
+  Node16 <--80--> Node18
+  Node16 <--40--> Node17((17))
+
+  Node19 <--30--> Node20((20))
+  Node19 <--8--> Node18
+  
+  Node18 <--10--> Node20
+  Node18 <--30--> Node17
+
+  Node17 <--5--> Node20
