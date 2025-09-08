@@ -1,68 +1,168 @@
+
 graph LR
-  Node1((1)) --40--> Node5((
+  Node1((1)) ----|40| Node5((
     5
-    G = 40
+    G = 23
     H = 66
     F = 89
   ))
-  Node1 ----|15| Node4((4))
-  Node1 <--40--> Node3((3))
-  Node1 <--60--> Node2((2))
+  Node1 ----|15| Node4((
+    4
+    G = 15
+    H = 66
+    F = 81
+  ))
+  Node1 ----|40| Node3((
+    3
+    G = 25
+    H = 80
+    F = 105
+  ))
+  Node1 ----|60| Node2((
+    2
+    G = 60
+    H = 101
+    F = 161
+  ))
   
-  Node5 <--10--> Node9((9))
-  Node5 <--8--> Node6((6))
-  Node5 <--8--> Node4
+  Node5 ----|10| Node9((
+    9
+    G = 33
+    H = 45
+    F = 78
+  ))
+  Node5 ----|8| Node6((
+    6
+    G = 23
+    H = 58
+    F = 81
+  ))
+  Node5 ----|8| Node4
 
-  Node4 <--8--> Node6
-  Node4 <--15--> Node7((7))
-  Node4 <--10--> Node3
+  Node4 ----|8| Node6
+  Node4 ----|15| Node7((
+    7
+    G = 28
+    H = 60
+    F = 88
+  ))
+  Node4 ----|10| Node3
 
-  Node3 <--15--> Node7
-  Node3 <--20--> Node8((8))
-  Node3 <--20--> Node2
+  Node3 ----|15| Node7
+  Node3 ----|20| Node8((8))
+  Node3 ----|20| Node2
 
-  Node2 <--18--> Node8
+  Node2 ----|18| Node8
 
-  Node9 <--15--> Node13((13))
-  Node9 <--15--> Node12((12))
-  Node9 <--12--> Node10((10))
-  Node9 <--10--> Node6
+  Node9 ----|15| Node13((
+    13
+    G = 44
+    H = 30
+    F = 74
+  ))
+  Node9 ----|15| Node12((
+    12
+    G = 36
+    H = 38
+    F = 74
+  ))
+  Node9 ----|12| Node10((
+    10
+    G = 31
+    H = 43
+    F = 74
+  ))
+  Node9 ----|10| Node6
 
-  Node6 <--8--> Node10
-  Node6 <--5--> Node7
+  Node6 ----|8| Node10
+  Node6 ----|5| Node7
 
-  Node7 <--15--> Node10
-  Node7 <--50--> Node11((11))
-  Node7 <--18--> Node8
+  Node7 ----|15| Node10
+  Node7 ----|50| Node11((
+    11
+    G = 71
+    H = 83
+    F = 154
+  ))
+  Node7 ----|18| Node8
 
-  Node8 <--20--> Node11
+  Node8 ----|20| Node11
 
-  Node13 <--10--> Node15((15))
-  Node13 <--15--> Node14((14))
-  Node13 <--8--> Node12
+  Node13 ----|10| Node15((
+    15
+    G = 54
+    H = 20
+    F = 74
+  ))
+  Node13 ----|15| Node14((
+    14
+    G = 51
+    H = 30
+    F = 81
+  ))
+  Node13 ----|8| Node12
 
-  Node10 <--5--> Node12
-  Node10 <--40--> Node11
+  Node10 ----|5| Node12
+  Node10 ----|40| Node11
 
-  Node11 <--50--> Node12
-  Node11 <--40--> Node16((16))
+  Node11 ----|50| Node12
+  Node11 ----|40| Node16((
+    16
+    G = 86
+    H = 45
+    F = 131
+  ))
 
-  Node12 <--15--> Node14
-  Node12 <--50--> Node16
+  Node12 ----|15| Node14
+  Node12 ----|50| Node16
 
-  Node15 <--10--> Node19((19))
-  Node15 <--10--> Node18((18))
+  Node15 ----|10| Node19((
+    19
+    G = 64
+    H = 18
+    F = 82
+  ))
+  Node15 ----|10| Node18((
+    18
+    G = 64
+    H = 10
+    F = 74
+  ))
 
-  Node14 <--20--> Node18
-  Node14 <--50--> Node16
+  Node14 ----|20| Node18
+  Node14 ----|50| Node16
 
-  Node16 <--80--> Node18
-  Node16 <--40--> Node17((17))
+  Node16 ----|80| Node18
+  Node16 ----|40| Node17((
+    17
+    G = 94
+    H = 5
+    F = 99
+  ))
 
-  Node19 <--30--> Node20((20))
-  Node19 <--8--> Node18
+  Node19 ----|30| Node20((20))
+  Node19 ----|8| Node18
   
-  Node18 <--10--> Node20
-  Node18 <--30--> Node17
+  Node18 ----|10| Node20
+  Node18 ----|30| Node17
 
-  Node17 <--5--> Node20
+  Node17 ----|5| Node20
+
+  classDef open fill:#655555,stroke:#333,stroke-width:2px;
+  %% Lista abierta
+  class Node2,Node3,Node5,Node7,Node8,Node9,Node11,Node14,Node16,Node17,Node19 open;
+
+  classDef startend fill:#f95555,stroke:#333,stroke-width:2px;
+  %% Lista cerrada
+  class Node1,Node4,Node6,Node10,Node12,Node13,Node15,Node18 startend;
+
+  %% Lista abierta representada en nodos con borde rojo y lista cerrada en nodos con borde azul.
+  %% Nodo inicial y final representados
+  LA[Lista Abierta] --> 2
+  2 --> 3 --> 5 --> 7 --> 8 --> 9 --> 11 --> 14 --> 16 --> 17 --> 19
+  LC[Lista Cerrada] --> 1
+  1 --> 4 --> 6 --> 10 --> 12 --> 13 --> 15 --> 18 --> 20
+  SE[Nodo Inicial] --> 1
+
+  %% Resultado ShortestPath[Resultado Shortest Path]
+  20 --> 18 --> 15 --> 13 --> 12 --> 10 --> 6 --> 4 --> 1[Nodo Inicial]
