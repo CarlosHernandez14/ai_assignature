@@ -1,0 +1,9 @@
+
+# Libs needed for AI
+tensorflow 
+opencv-python
+scikit-learn
+pandas
+numpy
+keras
+pygame
