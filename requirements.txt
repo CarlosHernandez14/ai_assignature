@@ -1,7 +1,7 @@
 
 # Libs needed for AI
 tensorflow 
-opencv-python
+opencv-contrib-python
 scikit-learn
 pandas
 numpy

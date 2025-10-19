@@ -1,0 +1,10 @@
+
+Notas Observadas
+
+Note que si detecta bien las caras usando Fisherface, ya que este se 
+adapta mejor a los cambios de luz, aunque aun asi le cuesta segun los 
+cambios de iluminacion.
+
+Probe igual con EigenFaces y aunque la precision es similar, este tarda
+mucho mas en entrenar, ademas de que cuando se entreno de manera mas general
+con muchas clases le costaba diferenciar unas de otras aveces

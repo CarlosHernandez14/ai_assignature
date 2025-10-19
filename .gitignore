@@ -2,3 +2,8 @@
 
 # For virtual python envs needed
 .venv/
+
+/projects/face_recog/datasets
+/projects/expression_recog/images
+
+.DS_Store

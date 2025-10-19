@@ -1,0 +1,12 @@
+
+Notas Observadas
+
+En el caso de reconocimiento facial, igualmente Fisherface
+se comportaba mejor con mayor precision, ademas cuando se ponen
+mas imagenes de una clase a comparacion con las otras suele tener
+menos precision, por lo que se deben pasar cantidades similares
+de imagenes para cada clase
+
+Tambien si los cambios de luz eran notorios con respecto al 
+dataset de entrenamiento no sabia identificar a que clase 
+pertenecian
