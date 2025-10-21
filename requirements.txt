@@ -1,9 +1,11 @@
 
 # Libs needed for AI
+matplotlib
 tensorflow 
 opencv-contrib-python
 scikit-learn
 pandas
 numpy
 keras
-pygame  
+pygame
+scikit-image

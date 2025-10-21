@@ -7,3 +7,6 @@
 /projects/expression_recog/images
 
 .DS_Store
+
+/projects/cnn/datasets
+/projects/cnn/datasets/sportimages.zip
