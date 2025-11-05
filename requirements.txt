@@ -9,3 +9,7 @@ numpy
 keras
 pygame
 scikit-image
+
+# Libs needed for data collection and web scrapping
+requests
+Pillow
