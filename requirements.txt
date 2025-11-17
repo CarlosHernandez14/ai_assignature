@@ -1,17 +1,40 @@
 
 # Libs needed for AI
-matplotlib
-tensorflow 
+# matplotlib
+# # tensorflow
+# tensorflow-cpu==2.10.0
+# tensorflow-directml-plugin
+# opencv-contrib-python
+# scikit-learn
+# pandas
+# numpy
+# keras
+# pygame
+# scikit-image
+
+# # Libs needed for data collection and web scrapping
+# requests
+# Pillow
+# kagglehub
+# tqdm
+
+# # Libs to train the model with torch (for amd)
+# # torch
+# # torchvision
+# # timm
+# # torch-directml
+# # albumentations
+
+# For amd graphics cards
+numpy<2.0,>=1.22.0
+tensorflow-cpu==2.10.0
+tensorflow-directml-plugin
 opencv-contrib-python
 scikit-learn
 pandas
-numpy
-keras
-pygame
+matplotlib
+pillow
 scikit-image
-
-# Libs needed for data collection and web scrapping
-requests
-Pillow
-kagglehub
 tqdm
+requests
+kagglehub
