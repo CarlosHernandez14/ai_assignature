@@ -38,3 +38,9 @@ scikit-image
 tqdm
 requests
 kagglehub
+
+ultralytics 
+transformers 
+torch 
+imagehash
+sahi

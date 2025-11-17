@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
 """
 Downloads a KaggleHub dataset (using kagglehub.dataset_download),
-resizes images to a fixed square size and saves them all into one folder.
+optionally resizes images to a fixed square size and saves them all into one folder.
 
-Usage example:
-python download_resize.py \
-    --dataset jessicali9530/stanford-dogs-dataset \
-    --out_dir ./data/stanford_100 \
-    --max_images 5000 \
-    --size 100 \
-    --shuffle
+Behavior:
+ - If --size is provided: images are resized to SIZE x SIZE and saved as JPEG.
+ - If --size is NOT provided: images are copied as-is into the output folder (original extensions preserved).
+
+Usage examples:
+  # Resize to 100x100 (same as original behavior)
+  python download_resize_optional_size.py --dataset jessicali9530/stanford-dogs-dataset --out_dir ./data/stanford_100 --size 100 --max_images 5000 --shuffle
+
+  # Do NOT resize: just copy the original images to out_dir
+  python download_resize_optional_size.py --dataset jessicali9530/stanford-dogs-dataset --out_dir ./data/stanford_orig --max_images 5000 --shuffle
 
 Requires:
     pip install kagglehub pillow tqdm
 """
-
 import argparse
 import os
 import zipfile
@@ -33,22 +35,14 @@ IMG_EXTS = {".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".gif"}
 
 
 def download_dataset(dataset_id: str) -> Path:
-    """
-    Calls kagglehub.dataset_download and returns a Path to the downloaded resource.
-    This may be a directory or a zip file depending on kagglehub behaviour.
-    """
     print(f"Downloading dataset '{dataset_id}' using kagglehub...")
-    path = kagglehub.dataset_download(dataset_id)  # keeps your original call
+    path = kagglehub.dataset_download(dataset_id)
     p = Path(path)
     print("Downloaded ->", p)
     return p
 
 
 def extract_if_zip(p: Path, extract_to: Optional[Path] = None) -> Path:
-    """
-    If p is a zip file, extract it and return the folder where files are extracted.
-    If p is already a directory, return p unchanged.
-    """
     if p.is_dir():
         return p
     if zipfile.is_zipfile(p):
@@ -57,7 +51,6 @@ def extract_if_zip(p: Path, extract_to: Optional[Path] = None) -> Path:
         with zipfile.ZipFile(p, "r") as z:
             z.extractall(dest)
         return dest
-    # not a dir or zip -> return parent (some dataset_download implementations may return a file)
     return p.parent
 
 
@@ -76,12 +69,9 @@ def ensure_out_dir(out_dir: Path):
 def save_resized(image_path: Path, out_path: Path, size: int):
     try:
         with Image.open(image_path) as im:
-            # Convert to RGB to avoid issues with PNG palettes / transparency
             im = im.convert("RGB")
-            # Resize using a good resampling filter
-            im = im.resize((size, size), resample=Image.LANCZOS)  # type: ignore
+            im = im.resize((size, size), resample=Image.LANCZOS) # type:ignore
             out_path.parent.mkdir(parents=True, exist_ok=True)
-            # Save as JPEG for uniformity — you can change format if you want
             im.save(out_path, format="JPEG", quality=90)
     except UnidentifiedImageError:
         raise
@@ -89,12 +79,18 @@ def save_resized(image_path: Path, out_path: Path, size: int):
         raise
 
 
+def copy_original(image_path: Path, out_path: Path):
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    # Use copy2 to preserve metadata if desired
+    shutil.copy2(image_path, out_path)
+
+
 def main():
-    parser = argparse.ArgumentParser(description="Download dataset from kagglehub, resize images and collect them in one folder.")
+    parser = argparse.ArgumentParser(description="Download dataset from kagglehub, optionally resize images and collect them in one folder.")
     parser.add_argument("--dataset", "-d", default="jessicali9530/stanford-dogs-dataset", help="KaggleHub dataset id (owner/dataset).")
-    parser.add_argument("--out_dir", "-o", required=True, help="Output directory to store resized images.")
+    parser.add_argument("--out_dir", "-o", required=True, help="Output directory to store images.")
     parser.add_argument("--max_images", "-m", type=int, default=0, help="Maximum number of images to save (0 = all).")
-    parser.add_argument("--size", "-s", type=int, default=100, help="Size to resize images to (square). Default 100.")
+    parser.add_argument("--size", "-s", type=int, default=None, help="If provided, resize images to SIZE x SIZE (square) and save as JPEG. If omitted, images are copied as-is.")
     parser.add_argument("--shuffle", action="store_true", help="Shuffle image ordering before selecting max_images.")
     parser.add_argument("--skip_existing", action="store_true", help="If true, skip saving if an output filename already exists.")
     parser.add_argument("--prefix", default="img", help="Prefix for output files (default 'img').")
@@ -119,7 +115,6 @@ def main():
             temp_extract_dir = Path(tempfile.mkdtemp(prefix="kagglehub_extracted_"))
             extracted_dir = extract_if_zip(downloaded, temp_extract_dir)
         else:
-            # If dataset_download returned a directory path or a file containing folders
             extracted_dir = extract_if_zip(Path(downloaded))
     except Exception as e:
         print("ERROR during extraction:", e)
@@ -146,31 +141,43 @@ def main():
     if max_images:
         image_files = image_files[:max_images]
 
-    # 5) Resize and save all into out_dir
+    # 5) Resize (if size provided) OR copy originals
     failures = 0
     saved = 0
     total = len(image_files)
     pad_width = max(6, len(str(total)))  # zero-pad width for filenames
+    resizing = args.size is not None
 
-    print(f"Resizing to {args.size}x{args.size} and saving into {out_dir} ...")
+    mode_desc = f"Resizing to {args.size}x{args.size} and saving as JPEG" if resizing else "Copying originals without resizing"
+    print(f"{mode_desc} into {out_dir} ...")
+
     for idx, img_path in enumerate(tqdm(image_files, desc="Processing images", unit="img")):
-        out_name = f"{args.prefix}_{idx:0{pad_width}d}.jpg"
-        out_path = out_dir / out_name
+        if resizing:
+            out_name = f"{args.prefix}_{idx:0{pad_width}d}.jpg"
+            out_path = out_dir / out_name
+        else:
+            # preserve original extension
+            ext = img_path.suffix.lower()
+            out_name = f"{args.prefix}_{idx:0{pad_width}d}{ext}"
+            out_path = out_dir / out_name
+
         if out_path.exists() and args.skip_existing:
-            # skip and continue
             continue
+
         try:
-            save_resized(img_path, out_path, args.size)
+            if resizing:
+                save_resized(img_path, out_path, args.size)
+            else:
+                # copy original file as-is
+                copy_original(img_path, out_path)
             saved += 1
         except UnidentifiedImageError:
             failures += 1
-            # corrupted or unreadable image: skip
         except Exception as e:
             failures += 1
-            # print but continue
             tqdm.write(f"Failed to process {img_path}: {e}")
 
-    print(f"Done. Saved: {saved}. Failures/skipped due to errors: {failures}.")
+    print(f"Done. Saved: {saved}. Failures/errors: {failures}.")
 
     # 6) cleanup extracted temp dir if used
     if temp_extract_dir and Path(temp_extract_dir).exists():
@@ -179,7 +186,9 @@ def main():
         except Exception:
             pass
 
-    print("Output directory contains:", len(list(out_dir.glob("*.jpg"))), "images.")
+    # Count images in out_dir with any of the accepted extensions (including jpg)
+    out_count = sum(1 for _ in out_dir.rglob("*") if _.is_file() and _.suffix.lower() in IMG_EXTS.union({".jpg"}))
+    print("Output directory contains:", out_count, "images.")
 
 
 if __name__ == "__main__":
