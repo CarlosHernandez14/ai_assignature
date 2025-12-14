@@ -1,22 +1,20 @@
 
 # Libs needed for AI
-# matplotlib
-# # tensorflow
-# tensorflow-cpu==2.10.0
-# tensorflow-directml-plugin
-# opencv-contrib-python
-# scikit-learn
-# pandas
-# numpy
-# keras
-# pygame
-# scikit-image
+matplotlib
+tensorflow
+opencv-contrib-python
+scikit-learn
+pandas
+numpy
+keras
+pygame
+scikit-image
 
 # # Libs needed for data collection and web scrapping
-# requests
-# Pillow
-# kagglehub
-# tqdm
+requests
+Pillow
+kagglehub
+tqdm
 
 # # Libs to train the model with torch (for amd)
 # # torch
@@ -26,21 +24,28 @@
 # # albumentations
 
 # For amd graphics cards
-numpy<2.0,>=1.22.0
-tensorflow-cpu==2.10.0
-tensorflow-directml-plugin
-opencv-contrib-python
-scikit-learn
-pandas
-matplotlib
-pillow
-scikit-image
-tqdm
-requests
-kagglehub
+# numpy<2.0,>=1.22.0
+# tensorflow-cpu==2.10.0
+# tensorflow-directml-plugin
+# opencv-contrib-python
+# scikit-learn
+# pandas
+# matplotlib
+# pillow
+# scikit-image
+# tqdm
+# requests
+# kagglehub
 
 ultralytics 
 transformers 
 torch 
 imagehash
 sahi
+
+# To use Roboflow
+supervision
+inference
+inference-sdk
+
+python-dotenv
