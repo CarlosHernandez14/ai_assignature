@@ -1,51 +1,17 @@
+# Minimal dependencies for the RAG project (clean set)
 
-# Libs needed for AI
-matplotlib
-tensorflow
-opencv-contrib-python
-scikit-learn
-pandas
-numpy
-keras
-pygame
-scikit-image
-
-# # Libs needed for data collection and web scrapping
+# Web scraping and corpus building
 requests
-Pillow
-kagglehub
+feedparser
+trafilatura
 tqdm
 
-# # Libs to train the model with torch (for amd)
-# # torch
-# # torchvision
-# # timm
-# # torch-directml
-# # albumentations
+# Document ingestion
+pypdf
 
-# For amd graphics cards
-# numpy<2.0,>=1.22.0
-# tensorflow-cpu==2.10.0
-# tensorflow-directml-plugin
-# opencv-contrib-python
-# scikit-learn
-# pandas
-# matplotlib
-# pillow
-# scikit-image
-# tqdm
-# requests
-# kagglehub
+# YouTube comments scraping
+youtube-comment-downloader
 
-ultralytics 
-transformers 
-torch 
-imagehash
-sahi
-
-# To use Roboflow
-supervision
-inference
-inference-sdk
-
-python-dotenv
+# Vector store and embeddings pipeline
+chromadb
+snscrape

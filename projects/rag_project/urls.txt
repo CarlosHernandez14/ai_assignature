@@ -1,0 +1,63 @@
+# Direct article/report URLs (Spanish) aligned with: Gen Z, hiperconectividad, infoxicación, IA, autonomía, identidad líquida, burnout, vigilancia algorítmica, esfera pública.
+# Edita/añade más. Una por línea. Las líneas que empiezan con # son ignoradas.
+
+# Som360 (síntesis sobre Gen Z, tiempo en redes, referencias a informes)
+https://www.som360.org/es/monografico/generacion-z
+https://www.som360.org/es/temas/adolescencia
+https://www.som360.org/es/noticias/jovenes-salud-mental
+
+# El País - selección de secciones (sociedad/tecnología/planeta futuro). Introduce artículos concretos si lo deseas.
+https://elpais.com/tecnologia/
+https://elpais.com/sociedad/
+https://elpais.com/planeta-futuro/
+# Ejemplos de crónicas y análisis (sustituibles por artículos concretos si identificas mejores):
+https://elpais.com/opinion/
+https://elpais.com/eps/
+
+# Infobae (tecnología / sociedad)
+https://www.infobae.com/tecno/
+https://www.infobae.com/sociedad/
+
+# The Conversation (ES) - tecnología/sociedad
+https://theconversation.com/es/technology
+https://theconversation.com/es
+
+# Agencia SINC (ciencia y sociedad)
+https://www.agenciasinc.es/Informacion-y-Sociedad
+https://www.agenciasinc.es/Opinion
+
+# DW Español - tecnología y sociedad
+https://www.dw.com/es/temas/tecnolog%C3%ADa/s-13459
+https://www.dw.com/es/temas/sociedad/s-10109
+
+# CEPAL (juventud, políticas digitales)
+https://www.cepal.org/es/etiquetas/juventud
+https://www.cepal.org/es/temas/sociedad-de-la-informacion
+
+# UNESCO (juventud, alfabetización mediática, cultura digital)
+https://www.unesco.org/es/communication-information
+https://www.unesco.org/es/education/youth
+
+# UNICEF (bienestar digital y juventud)
+https://www.unicef.org/es/temas/tecnologia-digital
+https://www.unicef.org/es/adolescencia
+
+# Fundación Telefónica (Sociedad Digital en España)
+https://fundaciontelefonica.com/cultura-digital/sociedad-digital-en-espana/
+# Sustituir por enlaces directos a capítulos/informes al detectarlos
+
+# Observatorio Nacional de Tecnología y Sociedad (ONTSI)
+https://www.ontsi.es/es/estudios/informes
+https://www.ontsi.es/es/ciudadania
+
+# EHU/UPV, Dialnet (repositorios académicos en español)
+https://dialnet.unirioja.es/
+https://addi.ehu.es/
+
+# Foucault/Habermas/Heidegger (contextos explicativos y debates)
+https://plato.stanford.edu/entries/foucault/
+https://plato.stanford.edu/entries/habermas/
+https://plato.stanford.edu/entries/heidegger/
+
+# Byung-Chul Han (cultura del rendimiento, hipertransparencia, psicopolítica)
+https://www.herdereditorial.com/colecciones/byung-chul-han/ (catálogo, para localizar reseñas/fragmentos)

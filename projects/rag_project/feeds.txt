@@ -1,0 +1,43 @@
+# RSS/Atom feeds (Spanish) aligned with Gen Z, tecnología, sociedad, IA, y cultura
+# Puedes editar esta lista. Una por línea. Líneas que empiezan con # son ignoradas.
+
+# BBC Mundo - portada y tecnología
+https://feeds.bbci.co.uk/mundo/rss.xml
+https://feeds.bbci.co.uk/mundo/temas/tecnologia/rss.xml
+
+# El País - Sociedad (general), Tecnología, Planeta Futuro (activismo, sociedad civil)
+https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/sociedad/portada
+https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/tecnologia/portada
+https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/planeta-futuro/portada
+
+# El Diario - Tecnología y Sociedad
+https://www.eldiario.es/rss/tecnologia/
+https://www.eldiario.es/rss/sociedad/
+
+# Xataka (tecnología e IA)
+https://www.xataka.com/index.xml
+
+# Infobae (general y tecnología, a veces requiere fallback)
+https://www.infobae.com/feeds/rss/
+https://www.infobae.com/technology/rss/
+
+# The Conversation España (ciencia/tecnología/sociedad)
+https://theconversation.com/es/articles.atom?language=es
+https://theconversation.com/es/technology/articles.atom?language=es
+
+# Agencia SINC (ciencia, sociedad, tecnología)
+https://www.agenciasinc.es/feed
+https://www.agenciasinc.es/Opinion/feed
+
+# DW Español - tecnología y sociedad
+https://www.dw.com/rssfeed/0,,2592,00.xml
+https://www.dw.com/rssfeed/0,,607,00.xml
+
+# CEPAL Noticias (políticas públicas, juventud, sociedad)
+https://www.cepal.org/es/rss.xml
+
+# UNESCO (juventud, educación, cultura digital)
+https://www.unesco.org/es/rss
+
+# UNICEF (juventud, bienestar digital)
+https://www.unicef.org/es/rss.xml
