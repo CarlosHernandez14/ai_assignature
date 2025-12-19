@@ -12,3 +12,7 @@
 /projects/cnn/datasets/sportimages.zip
 
 /projects/cnn_project/datasets
+*__pycache__
+
+*llama.cpp
+*tutor_gguf

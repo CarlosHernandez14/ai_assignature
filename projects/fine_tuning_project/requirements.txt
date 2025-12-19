@@ -1,0 +1,21 @@
+# Core training stack (CPU/MPS-friendly; no NVIDIA/CUDA/bitsandbytes)
+torch
+transformers>=4.44.0
+peft>=0.11.0
+datasets>=2.19.0
+accelerate>=0.33.0
+safetensors
+sentencepiece
+tokenizers
+numpy
+tqdm
+pyyaml
+requests
+# HTML parsing for optional scraping
+beautifulsoup4
+
+# Optional quality/eval tools
+evaluate
+
+# If you plan to push/pull from HF Hub (optional)
+huggingface_hub

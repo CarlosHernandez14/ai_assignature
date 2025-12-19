@@ -1,30 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Scrape Spanish news / reports pages into a JSONL corpus, ready for RAG.
-- Pulls from RSS/Atom feeds (via feedparser) and/or a list of direct URLs.
-- Extracts main article text + metadata with trafilatura (robust for ES content).
-- Writes one JSON object per line to ./projects/rag_project/corpus/articles.jsonl
-
-Why this file?
-- Twitter scraping via snscrape is currently blocked by X endpoint changes (404).
-- This is a drop-in alternative to build your Spanish corpus from open web sources
-  (news, NGO reports, blogs, think-tanks, etc.) for your RAG pipeline.
-
-Dependencies (install once in your venv):
-  pip install trafilatura feedparser
-
-Usage examples:
-  python projects/rag_project/scrape_corpus.py
-  python projects/rag_project/scrape_corpus.py --feeds https://example.com/rss https://another.com/feed
-  python projects/rag_project/scrape_corpus.py --urls https://som360.org/... https://elpais.com/...
-  python projects/rag_project/scrape_corpus.py --feeds-file projects/rag_project/feeds.txt --urls-file projects/rag_project/urls.txt --max-per-feed 50
-
-Notes:
-- Respect robots.txt and website terms. Use moderate rates (--sleep).
-- If some media are paywalled, you may only be able to capture previews.
-- Feeds are more stable than ad-hoc crawling; prefer RSS/Atom when possible.
-"""
 
 import argparse
 import json
